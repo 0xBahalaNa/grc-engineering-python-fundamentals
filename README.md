@@ -35,9 +35,9 @@ python-grc-fundamentals/
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | 1 | Getting Started | Complete |
-| 2 | Variables and Simple Data Types | In Progress |
-| 3 | Introducing Lists | Not Started |
-| 4 | Working with Lists | Not Started |
+| 2 | Variables and Simple Data Types | Complete |
+| 3 | Introducing Lists | Complete |
+| 4 | Working with Lists | Complete |
 | 5 | if Statements | Not Started |
 | 6 | Dictionaries | Not Started |
 | 7 | User Input and while Loops | Not Started |
