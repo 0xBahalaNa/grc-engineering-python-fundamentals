@@ -38,9 +38,9 @@ python-grc-fundamentals/
 | 2 | Variables and Simple Data Types | Complete |
 | 3 | Introducing Lists | Complete |
 | 4 | Working with Lists | Complete |
-| 5 | if Statements | In Progress |
-| 6 | Dictionaries | Not Started |
-| 7 | User Input and while Loops | Not Started |
+| 5 | if Statements | Complete |
+| 6 | Dictionaries | Complete |
+| 7 | User Input and while Loops | In Progress |
 | 8 | Functions | Not Started |
 | 9 | Classes | Not Started |
 | 10 | Files and Exceptions | Not Started |
