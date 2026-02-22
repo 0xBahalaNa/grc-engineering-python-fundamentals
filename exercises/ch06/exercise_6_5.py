@@ -41,7 +41,15 @@ print(f"\nFailed checks ({len(failed_checks)}):")
 for e in failed_checks:
     print(f"  {e['control']} - {e['source']}")
 
-# Count passes vs. failures
-results = [e["result"] for e in evidence_log]
-print(f"\nPasses: {results.count('pass')}")
-print(f"Failures: {results.count('fail')}")
+# Count passes vs. failures with a manual loop
+pass_count = 0
+fail_count = 0
+
+for e in evidence_log:
+    if e["result"] == "pass":
+        pass_count += 1
+    elif e["result"] == "fail":
+        fail_count += 1
+
+print(f"\nPasses: {pass_count}")
+print(f"Failures: {fail_count}")
