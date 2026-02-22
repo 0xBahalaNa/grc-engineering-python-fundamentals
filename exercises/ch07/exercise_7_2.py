@@ -25,9 +25,14 @@ print(f"\n{'=' * 40}")
 print(f"  SUMMARY - {len(evidence_log)} entries")
 print(f"{'=' * 40}")
 
-for i, e in enumerate(evidence_log, 1):
+i = 1
+for e in evidence_log:
     print(f"\n  {i}. [{e['result'].upper()}] {e['control_id']} - {e['notes']}")
+    i += 1
 
 # pass/fail totals
-passed = sum(1 for e in evidence_log if e["result"] == "pass")
+passed = 0
+for e in evidence_log:
+    if e["result"] == "pass":
+        passed += 1
 print(f"\n  Passed: {passed} | Failed: {len(evidence_log) - passed}")
