@@ -35,4 +35,9 @@ while True:
         print(f"  {abbreviation}: {control_families[abbreviation]}\n")
     else:
         print(f"  Error: '{abbreviation}' is not a valid control family abbreviation.")
-        print("  Valid abbreviations: " + ", ".join(sorted(control_families.keys())) + "\n")
+        valid_abbrs = ""
+        for key in sorted(control_families.keys()):
+            if valid_abbrs:
+                valid_abbrs += ", "
+            valid_abbrs += key
+        print(f"  Valid abbreviations: {valid_abbrs}\n")
