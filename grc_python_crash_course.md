@@ -4,6 +4,8 @@
 
 Every exercise below maps to the chapter structure of the original book. The concepts are identical — the context is GRC Engineering. Work through these alongside (or instead of) the book exercises. By the end, you'll have Python fundamentals wired to compliance patterns you'll use in your portfolio tools.
 
+> **★ Beyond PCC3e** marks a step that uses a tool or technique the book does not teach in the corresponding chapter (or at all). These are intentional, portfolio-relevant extensions — the note tells you where (if anywhere) the book covers them, so you can tell core fundamentals from added scope.
+
 ---
 
 ## Chapter 1: Getting Started
@@ -61,13 +63,18 @@ Assign numeric severity values: Critical = 4, High = 3, Medium = 2, Low = 1.
 - Print it rounded to one decimal place using `round()`
 
 ### Exercise 2-4: Control ID Anatomy
-Given `control_id = "AC-2(3)"`:
-- Use string methods to extract just the family prefix (`"AC"`)
-- Extract just the base control number (`"2"`)
-- Extract the enhancement number (`"3"`)
-- Print each part with a label
+Practice the Chapter 2 string methods (case, whitespace, prefix/suffix removal) to clean and normalize control identifiers:
+```python
+raw_family = "  access control  "
+prefixed_id = "NIST-AC-2"
+control_id = "AC-2(3)"
+```
+- Strip the whitespace from `raw_family` and print it in title case
+- Use `removeprefix("NIST-")` on `prefixed_id` to recover `"AC-2"`
+- Use `removesuffix("(3)")` on `control_id` to recover the base control `"AC-2"`, then print a label for it
+- Print the family abbreviation in upper case
 
-Hint: Look at `split()`, string indexing, and `strip()`.
+Splitting a control like `"AC-2(3)"` into its separate prefix / base / enhancement parts needs `split()` and indexing — you'll have those after Chapters 3–4. For now, stay with the Chapter 2 string methods above.
 
 ### Exercise 2-5: Compliance Quote
 Assign a quote about compliance to a variable. Include the speaker's name in a separate variable. Print a message like:
@@ -136,20 +143,18 @@ Control Family: AU
 ```
 
 ### Exercise 4-2: Finding Summary
-Create a list of 5 dictionaries (yes, you haven't formally learned dictionaries yet — just follow the pattern):
+Store five findings as three parallel lists (dictionaries come in Chapter 6 — for now use lists you already know):
 ```python
-findings = [
-    {"id": "F-001", "control": "AC-2", "severity": "High"},
-    {"id": "F-002", "control": "IA-2", "severity": "Critical"},
-    {"id": "F-003", "control": "AU-6", "severity": "Medium"},
-    {"id": "F-004", "control": "SC-28", "severity": "High"},
-    {"id": "F-005", "control": "CM-6", "severity": "Low"},
-]
+finding_ids        = ["F-001", "F-002", "F-003", "F-004", "F-005"]
+finding_controls   = ["AC-2",  "IA-2",  "AU-6",  "SC-28", "CM-6"]
+finding_severities = ["High",  "Critical", "Medium", "High", "Low"]
 ```
-Loop through and print each finding as:
+- Loop with `for i in range(len(finding_ids)):` and use the index to reach the matching item in each list
+- Print each finding as:
 ```
 Finding F-001: AC-2 — Severity: High
 ```
+(This index-pairing is exactly what dictionaries will make cleaner in Chapter 6.)
 
 ### Exercise 4-3: Control Number Generator
 Use `range()` to generate control numbers for the AC (Access Control) family:
@@ -235,19 +240,14 @@ cji_access = True
 - If `cji_access` is False → "N/A: No CJI access, MFA check not required"
 
 ### Exercise 5-5: Control List Filtering
-Given a list of control statuses:
+Given control IDs and their statuses as two parallel lists (dictionaries are Chapter 6 — stick with lists for now):
 ```python
-controls = [
-    {"id": "AC-2", "status": "implemented"},
-    {"id": "IA-2", "status": "partially_implemented"},
-    {"id": "AU-2", "status": "not_implemented"},
-    {"id": "SC-28", "status": "implemented"},
-    {"id": "CM-6", "status": "planned"},
-    {"id": "AC-6", "status": "not_implemented"},
-]
+control_ids      = ["AC-2", "IA-2", "AU-2", "SC-28", "CM-6", "AC-6"]
+control_statuses = ["implemented", "partially_implemented", "not_implemented",
+                    "implemented", "planned", "not_implemented"]
 ```
-Loop through and:
-- Print all controls that are NOT `"implemented"`
+Loop through by index and:
+- Print all controls whose status is NOT `"implemented"`
 - Count how many are `"not_implemented"`
 - Print a summary: `"X of Y controls require remediation."`
 
@@ -261,7 +261,7 @@ key_management = True
 ```
 - Use `and` to check if all four are True. Print the result.
 - Identify which requirement failed and print it.
-- Bonus: Use `all()` with a list of booleans to do the same check in one line.
+- Bonus (★ Beyond PCC3e — `all()` is a built-in the book never introduces): use `all()` with a list of booleans to do the same check in one line.
 
 ---
 
@@ -341,7 +341,8 @@ Build a dictionary that counts how many findings exist per control:
 ```
 - Loop through and build the count manually (don't use `Counter` yet)
 - Print the control with the most findings
-- Print controls sorted by count (highest first)
+- Print the controls sorted by control ID (use `sorted()` over the dictionary's keys — the Chapter 6 way)
+- Bonus (★ Beyond PCC3e): print them sorted by count, highest first — this needs `sorted(..., key=...)`, which the book doesn't cover until Chapter 17
 
 ### Exercise 6-5: List of Dictionaries — Audit Evidence Log
 Create a list of 5 evidence records:
@@ -356,15 +357,17 @@ evidence_log = [
 - Create a new list containing only the failed checks
 - Print the count of passes vs. failures
 
-### Exercise 6-6: Dictionary Comprehension — Severity Map
-Create a dictionary mapping severity names to numeric scores using a comprehension:
+### Exercise 6-6: Building a Severity Map
+Build a dictionary mapping severity names to numeric scores from two parallel lists:
 ```python
 severity_names = ["Critical", "High", "Medium", "Low", "Info"]
 severity_scores = [4, 3, 2, 1, 0]
 ```
-Build: `{"Critical": 4, "High": 3, "Medium": 2, "Low": 1, "Info": 0}`
+- Start with an empty dict and fill it with a `for` loop over `range(len(severity_names))` to produce:
+  `{"Critical": 4, "High": 3, "Medium": 2, "Low": 1, "Info": 0}`
+- Then build the reverse mapping with another loop: `{4: "Critical", 3: "High", ...}`
 
-Then build the reverse mapping: `{4: "Critical", 3: "High", ...}`
+(PCC3e teaches *list* comprehensions in Chapter 4 but never *dictionary* comprehensions, so we build these dicts with an explicit loop. If you already know the `{k: v for ...}` syntax, that's a ★ Beyond-PCC3e shortcut you're free to use.)
 
 ---
 
@@ -476,7 +479,7 @@ Create a class `Control` with:
 - `__init__` taking: `control_id`, `name`, `family`, `status="not_assessed"`
 - A method `assess(result)` that updates the status to `"pass"` or `"fail"`
 - A method `describe()` that prints a formatted summary
-- A `__str__` method returning `"AC-2: Account Management [not_assessed]"`
+- A `__str__` method returning `"AC-2: Account Management [not_assessed]"` (★ Beyond PCC3e — the book's Chapter 9 stops at `__init__` and named methods; it doesn't introduce `__str__` until the Django chapter. It's a natural fit for classes, so we include it here.)
 
 Create 3 instances, assess them, and print each.
 
@@ -533,7 +536,7 @@ Create an `EvidencePackage` class that:
 - Takes a `package_id` and `framework` on init
 - Has an `add_evidence(control_id, evidence_dict)` method
 - Has a `validate()` method that checks each evidence record has required fields: `timestamp`, `source`, `result`
-- Has an `export_json()` method that returns the package as a JSON string (use `import json`)
+- Has an `export_json()` method that returns the package as a JSON string (use `import json`) — ★ a one-chapter forward reference: the `json` module is formally taught in Chapter 10
 - Handles invalid evidence gracefully with error messages, not crashes
 
 ---
@@ -576,9 +579,10 @@ Write a program that:
 ### Exercise 10-4: CSV Compliance Report
 Write a program that:
 - Creates compliance data (control ID, status, last assessed date, assessor)
-- Writes it to `compliance_report.csv` using the `csv` module
-- Reads it back and prints a formatted summary
+- Writes it to `compliance_report.csv` as plain text — one record per line, fields joined with commas (`",".join(...)`) — using the file-writing and `.split(",")` techniques from this chapter
+- Reads it back, splits each line on commas, and prints a formatted summary
 - Handles the case where the file doesn't exist (use `try/except FileNotFoundError`)
+- Bonus (★ Beyond PCC3e): redo it with the `csv` module (`csv.writer` / `csv.DictReader`). The book introduces the `csv` module in Chapter 16, so you'll use it for real in Project 2.
 
 ### Exercise 10-5: Exception Handling — Robust Input
 Write a program that reads a JSON config file for an audit:
@@ -607,8 +611,8 @@ Write a program that reads a simulated CloudTrail-style log file (create it firs
 - Write a summary report to `log_analysis.txt`
 - Handle malformed lines gracefully
 
-### Exercise 10-7: YAML Controls File
-Install PyYAML (`pip install pyyaml`). Write a program that:
+### Exercise 10-7: YAML Controls File ★ Beyond PCC3e
+PCC3e never covers YAML or third-party parsing libraries — this is an intentional extension because Project 1 loads its controls from a YAML config file. Install PyYAML (`pip install pyyaml`). Write a program that:
 - Reads a YAML file containing control definitions:
 ```yaml
 controls:
@@ -647,7 +651,7 @@ Add at least 2 more test cases including edge cases.
 ### Exercise 11-2: Test Severity Calculator
 Write tests for `calculate_risk_score` and `categorize_risk`:
 - Test boundary values (score of 5, 6, 11, 12, 19, 20)
-- Test that invalid inputs raise appropriate errors (add error handling to the function if you haven't)
+- Test that invalid inputs raise appropriate errors (add error handling to the function if you haven't) — ★ Beyond PCC3e: asserting that code raises an exception uses `pytest.raises`, which the book's Chapter 11 doesn't cover (it shows only `==`/`in`-style asserts)
 - Test the chained call: `categorize_risk(calculate_risk_score(5, 5))` == `"Critical"`
 
 ### Exercise 11-3: Test the Control Class
@@ -677,13 +681,13 @@ Write tests for your `EvidencePackage.validate()` method:
 
 ### Exercise 11-5: Test File Operations
 Write tests for your JSON evidence file functions:
-- Use `tmp_path` (pytest's built-in fixture) for temporary files
+- Use `tmp_path` (pytest's built-in fixture) for temporary files — ★ Beyond PCC3e: the book teaches writing your *own* `@pytest.fixture` but not the built-in `tmp_path`
 - Test writing and reading back produces identical data
 - Test that reading a nonexistent file handles gracefully
 - Test that malformed JSON raises the expected error
 
-### Exercise 11-6: Parametrized Compliance Tests
-Use `@pytest.mark.parametrize` to test multiple controls through the same test logic:
+### Exercise 11-6: Parametrized Compliance Tests ★ Beyond PCC3e
+`@pytest.mark.parametrize` isn't taught in PCC3e (Chapter 11 covers `@pytest.fixture` only) — it's included because it's the standard way to run one test body over many input cases. Use it to test multiple controls through the same test logic:
 ```python
 @pytest.mark.parametrize("control_id,expected_family", [
     ("AC-2", "Access Control"),
@@ -728,6 +732,8 @@ Build a CLI tool called `grc-audit` that ties together everything from Chapters 
 - Achieve >80% coverage (use `pytest-cov`)
 - Include both unit tests and integration tests
 
+> **★ Beyond PCC3e (by design):** this capstone uses real CLI tooling the book doesn't teach — `argparse` (command-line parsing), `PyYAML` (config files), the `csv` module and `datetime` (both formally introduced in the book's Chapter 16), and `pytest-cov` (coverage). They're here because a portfolio-grade audit tool needs them; just know they're added scope, not Chapter 1–11 fundamentals.
+
 **This project is a simplified version of your portfolio evidence collector tools. The patterns you learn here apply directly to Projects 4, 5, and 2B.**
 
 ---
@@ -750,12 +756,17 @@ Using only Python standard library (`csv`, `json`, `statistics`):
 - Calculate average time to remediate (generate remediation timestamps)
 - Identify trends over the 12-month period
 
-### Milestone 3: Visualization (Optional)
-If you want to explore matplotlib/plotly:
-- Compliance percentage over time (line chart)
-- Findings by severity (bar chart)
-- Framework comparison (grouped bar chart)
-- Control family heatmap
+### Milestone 3: Enrich from a Live API (Chapter 17)
+Mirror the book's Chapter 17 "Working with APIs" using the `requests` package:
+- Fetch live data from a public API — e.g., pull recent CVEs from the NVD API (`https://services.nvd.nist.gov/rest/json/cves/2.0`) or repo metadata from the GitHub API
+- Check `response.status_code` before processing, and handle a non-200 response
+- Parse the JSON response and join it to your generated compliance data (e.g., map CVEs to affected controls)
+- Write a short test (Chapter 11) asserting `status_code == 200` and that you got the expected number of items
+
+### Milestone 4: Visualization (Chapters 15–16)
+Visualization is the through-line of the book's Chapters 15–17, so build at least one chart with matplotlib or plotly:
+- Compliance percentage over time (line chart) — **required**
+- Optional: findings by severity (bar chart), framework comparison (grouped bar chart), control family heatmap
 
 **This builds the analysis skills you'll use in Project 9 (Continuous Monitoring Dashboard).**
 
@@ -782,12 +793,21 @@ Using Flask (simpler than Django for this purpose):
 - `GET /compliance/framework/<name>` — framework-specific status
 - `GET /compliance/gaps` — list controls that are not fully implemented
 
-### Milestone 4: Documentation
+### Milestone 4: User Accounts & Access Control (Chapter 19)
+The book's Chapter 19 is entirely a user-authentication system (register, log in, log out, restrict data to its owner). Recreate that concept on the API side:
+- Add simple authentication — an API key or token sent in a request header — and reject unauthenticated requests with `401`
+- Tie findings to the user who created them (an `owner` field), and filter `GET /findings` so a user sees only their own
+- Add a registration/login concept (even a minimal user store in JSON) so there is more than one identity to own data
+
+### Milestone 5: Documentation
 - Write API documentation in markdown
-- Include example `curl` commands for each endpoint
+- Include example `curl` commands for each endpoint (including the auth header)
 - Add basic input validation and error responses
+- Optional (★ Chapter 20): containerize or deploy the API and run it with the debugger/reloader off, mirroring the book's deployment chapter
 
 **This project is lower priority than Projects 1 and 2 above. Only tackle it if you want web API experience. The patterns are useful if you ever build a compliance dashboard backend.**
+
+> **Note on the Flask-vs-Django swap:** a JSON API has no HTML templates or Bootstrap styling, so the book's Chapter 18 templates and Chapter 20 CSS work are intentionally out of scope here. The conceptual cores that *do* carry over — request routing/views (M1), data persistence (M2), and user accounts + per-user data ownership (M4) — are all represented.
 
 ---
 
