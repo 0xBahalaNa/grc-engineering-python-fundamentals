@@ -95,3 +95,7 @@ grc_engineering_python_fundamentals/
 - **NIST 800-53 Rev 5** — control IDs, families, and baselines used throughout all exercises
 - **FedRAMP High** — baseline selection, evidence collection, and continuous monitoring exercises
 - **CJIS v6.0** — MFA validation, FIPS 140-3 encryption checks, and CJI access controls
+
+## License
+
+MIT. Full text in [LICENSE](LICENSE).
