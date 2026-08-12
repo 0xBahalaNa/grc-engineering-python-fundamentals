@@ -1,6 +1,6 @@
 # GRC Engineering Python Fundamentals Template
 
-Python fundamentals learned through GRC Engineering problems. Every exercise uses compliance data — controls, findings, evidence records, and framework mappings — instead of generic examples.
+Python fundamentals learned through GRC Engineering problems. Every exercise uses compliance data (controls, findings, evidence records, and framework mappings) instead of generic examples.
 
 ## What This Is
 
@@ -16,9 +16,9 @@ Chapters 1–11 cover fundamentals. Chapters 12–20 replace the book's projects
 
 The exercises in Chapters 1–11 follow the book's concept progression closely. The projects diverge intentionally:
 
-- **`argparse`** (Chapters 12–14) — Not covered in PCC3E. The CLI audit tool project uses it for command-line argument parsing, which is standard for the type of tools GRC Engineers build. It's part of Python's standard library and straightforward to pick up — the exercise doc provides enough context.
-- **Flask** (Chapters 18–20) — PCC3E teaches Django. Flask is used here because it's lighter weight and better suited for a small compliance API. If you've completed the Django chapters in the book, the concepts transfer directly.
-- **PyYAML** (Exercise 10-7) — Not in PCC3E. YAML is the configuration format used by most compliance-as-code tools (Cloud Custodian, Kubernetes, CI/CD pipelines), so it's included as a `pip install pyyaml` exercise.
+- **`argparse`** (Chapters 12–14). Not covered in PCC3E. The CLI audit tool project uses it for command-line argument parsing, which is standard for the type of tools GRC Engineers build. It's part of Python's standard library and straightforward to pick up; the exercise doc provides enough context.
+- **Flask** (Chapters 18–20). PCC3E teaches Django. Flask is used here because it's lighter weight and better suited for a small compliance API. If you've completed the Django chapters in the book, the concepts transfer directly.
+- **PyYAML** (Exercise 10-7). Not in PCC3E. YAML is the configuration format used by most compliance-as-code tools (Cloud Custodian, Kubernetes, CI/CD pipelines), so it's included as a `pip install pyyaml` exercise.
 
 None of these require the book to complete. The exercise descriptions in `grc_python_crash_course.md` are self-contained.
 
@@ -26,12 +26,12 @@ None of these require the book to complete. The exercise descriptions in `grc_py
 
 1. Clone this repository
 2. Open the exercise reference: [`grc_python_crash_course.md`](grc_python_crash_course.md)
-3. Start with Chapter 1 — each exercise file has a docstring describing what to build
+3. Start with Chapter 1. Each exercise file has a docstring describing what to build
 4. Read the full requirements in `grc_python_crash_course.md` before writing your solution
 
 ### Using Claude Code as a Tutor
 
-The [`CLAUDE.md`](CLAUDE.md) file configures Claude Code as a Python tutor that reviews your work, runs your code, and gives hints — but never writes solutions. When you start a new chapter, it will give you a high-level overview of the Python concepts covered and what kinds of problems the exercises will ask you to solve. If you use Claude Code, it will follow these rules automatically.
+The [`CLAUDE.md`](CLAUDE.md) file configures Claude Code as a Python tutor that reviews your work, runs your code, and gives hints, but never writes solutions. When you start a new chapter, it will give you a high-level overview of the Python concepts covered and what kinds of problems the exercises will ask you to solve. If you use Claude Code, it will follow these rules automatically.
 
 ### Recommended Git Workflow
 
@@ -86,15 +86,15 @@ grc_engineering_python_fundamentals/
 | 9 | Classes | 6 | Not Started |
 | 10 | Files and Exceptions | 7 | Not Started |
 | 11 | Testing Your Code | 6 | Not Started |
-| 12–14 | Project 1: GRC Audit CLI Tool | — | Not Started |
-| 15–17 | Project 2: Compliance Data Analysis | — | Not Started |
-| 18–20 | Project 3: Compliance API | — | Not Started |
+| 12–14 | Project 1: GRC Audit CLI Tool | n/a | Not Started |
+| 15–17 | Project 2: Compliance Data Analysis | n/a | Not Started |
+| 18–20 | Project 3: Compliance API | n/a | Not Started |
 
 ## Frameworks Referenced
 
-- **NIST 800-53 Rev 5** — control IDs, families, and baselines used throughout all exercises
-- **FedRAMP High** — baseline selection, evidence collection, and continuous monitoring exercises
-- **CJIS v6.0** — MFA validation, FIPS 140-3 encryption checks, and CJI access controls
+- **NIST 800-53 Rev 5.** Control IDs, families, and baselines used throughout all exercises
+- **FedRAMP High.** Baseline selection, evidence collection, and continuous monitoring exercises
+- **CJIS v6.0.** MFA validation, FIPS 140-3 encryption checks, and CJI access controls
 
 ## License
 
