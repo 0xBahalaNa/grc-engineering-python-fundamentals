@@ -285,7 +285,7 @@ control = {
 - Remove the `evidence_location` key using `del`
 
 ### Exercise 6-2: Framework Crosswalk
-Create a dictionary mapping NIST controls to their CJIS v6.0 equivalents:
+Create a dictionary mapping NIST controls to their CJIS v6.1 equivalents:
 ```python
 nist_to_cjis = {
     "AC-2": "AC-2 (Account Management)",
@@ -823,7 +823,7 @@ control = {
     "id": "AC-2",
     "name": "Account Management",
     "family": "Access Control",
-    "frameworks": ["NIST 800-53", "FedRAMP High", "CJIS v6.0"],
+    "frameworks": ["NIST 800-53", "FedRAMP High", "CJIS v6.1"],
     "status": "implemented",
     "last_assessed": "2026-01-15",
     "evidence_artifacts": ["iam_audit_2026-01-15.json"]

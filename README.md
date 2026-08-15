@@ -4,7 +4,7 @@ Python fundamentals learned through GRC Engineering problems. Every exercise use
 
 ## What This Is
 
-A complete set of Python exercises paralleling [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition) by Eric Matthes, recontextualized for GRC Engineering. The concepts are identical (variables, lists, dictionaries, functions, classes, files, testing). The data is NIST 800-53, FedRAMP High, and CJIS v6.0.
+A complete set of Python exercises paralleling [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition) by Eric Matthes, recontextualized for GRC Engineering. The concepts are identical (variables, lists, dictionaries, functions, classes, files, testing). The data is NIST 800-53, FedRAMP High, and CJIS v6.1.
 
 Chapters 1–11 cover fundamentals. Chapters 12–20 replace the book's projects (Alien Invasion, data visualization, Django web app) with three GRC-relevant builds:
 
@@ -94,7 +94,7 @@ grc_engineering_python_fundamentals/
 
 - **NIST 800-53 Rev 5.** Control IDs, families, and baselines used throughout all exercises
 - **FedRAMP High.** Baseline selection, evidence collection, and continuous monitoring exercises
-- **CJIS v6.0.** MFA validation, FIPS 140-3 encryption checks, and CJI access controls
+- **CJIS v6.1.** MFA validation, FIPS 140-3 encryption checks, and CJI access controls
 
 ## License
 
