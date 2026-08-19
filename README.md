@@ -1,6 +1,6 @@
 # GRC Engineering Python Fundamentals Template
 
-Python fundamentals learned through GRC Engineering problems. Every exercise uses compliance data (controls, findings, evidence records, and framework mappings) instead of generic examples.
+I learn Python fundamentals through GRC Engineering problems. Every exercise uses compliance data (controls, findings, evidence records, and framework mappings) instead of generic examples.
 
 ## What This Is
 
