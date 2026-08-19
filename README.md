@@ -29,9 +29,11 @@ None of these require the book to complete. The exercise descriptions in `grc_py
 3. Start with Chapter 1. Each exercise file has a docstring describing what to build
 4. Read the full requirements in `grc_python_crash_course.md` before writing your solution
 
-### Using Claude Code as a Tutor
+### Using a Coding Agent as a Tutor
 
-The [`CLAUDE.md`](CLAUDE.md) file configures Claude Code as a Python tutor that reviews your work, runs your code, and gives hints, but never writes solutions. When you start a new chapter, it will give you a high-level overview of the Python concepts covered and what kinds of problems the exercises will ask you to solve. If you use Claude Code, it will follow these rules automatically.
+The [`CLAUDE.md`](CLAUDE.md) file configures a coding agent as a Python tutor that reviews your work, runs your code, and gives hints, but never writes solutions. When you start a new chapter, it gives you a high-level overview of the Python concepts covered and what kinds of problems the exercises will ask you to solve.
+
+Claude Code picks it up automatically. For an agent that reads `AGENTS.md` instead, symlink it: `ln -s CLAUDE.md AGENTS.md`.
 
 ### Recommended Git Workflow
 
