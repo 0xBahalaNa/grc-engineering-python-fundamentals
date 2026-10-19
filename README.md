@@ -98,6 +98,8 @@ grc_engineering_python_fundamentals/
 - **FedRAMP High.** Baseline selection, evidence collection, and continuous monitoring exercises
 - **CJIS v6.1.** MFA validation, FIPS 140-3 encryption checks, and CJI access controls
 
+CI runs `python -m py_compile` on every tracked Python file. It is a syntax floor until this repo has tests.
+
 ## License
 
 MIT. Full text in [LICENSE](LICENSE).
